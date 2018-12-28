@@ -6,7 +6,7 @@ theme = "elate"
 
 [params]
   
-  #custom_css = ["css/custom1.css", "css/custom2.css"]
+  # custom_css = ["css/custom1.css", "css/custom2.css"]
 
   # Meta
   author = "Noble Ackerson"
@@ -37,10 +37,10 @@ theme = "elate"
     #  weight = 10
 
     # postpended links
-    #[[menu.postpend]]
-    #  url = "https://www.ndi.org"
-    #  name = "NDI"
-    #  weight = 10
+    [[menu.postpend]]
+      url = "https://www.ndi.org"
+      name = "NDI"
+      weight = 10
   
   # Hero section
   [params.hero]
@@ -49,6 +49,7 @@ theme = "elate"
  
   # Intro section
   # Available icons: http://simplelineicons.com/
+
   [params.intro]
 
   [[params.intro.item]]
@@ -126,7 +127,6 @@ theme = "elate"
     enable = true
     title = "Tools"
     description = "The Democracy Toolkit (DemTools) is designed to help empower civil society organizations, political parties and legislatures around the world by applying technology solutions to common challenges."
-    footertext = '<a href="#" target="_blank">Learn more</a>'
 
     [[params.tools.row]]
       img = "work_1.jpg"
@@ -149,7 +149,7 @@ theme = "elate"
 
   # Testimonials section
   [params.testimonials]
-    enable = true
+    enable = false
     title = "Testimonials"
     description = "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
 
@@ -171,8 +171,6 @@ theme = "elate"
       img = "person3.jpg"
       alt = "Person3"
     
-
-
 
   # Services section
   [params.services]
@@ -247,14 +245,14 @@ theme = "elate"
     map = true
     form = true
     title = "Get in touch"
-    description = "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    description = "Something witty to say in place of a template language"
     
     # Available icons: http://simplelineicons.com/
     details = [
-        ["icon-home", "5555 Love Paradise 56 New Clity 5655, <br> Excel Tower United Kingdom"],
-        ["icon-phone", "(123) 465-6789"],
-        ["icon-envelope", "info@freehtml5.co"],
-        ["icon-globe", '<a href="http://freehtml5.co/" target="_blank">freehtml5.co</a>']
+        ["icon-home", "455 Massachusettes Avenue, <br> Washington D.C."],
+        ["icon-phone", "(202) 123-4567"],
+        ["icon-envelope", "info@ndi.org"],
+        ["icon-globe", '<a href="https://www.ndi.org/" target="_blank">ndi.org</a>']
       ]
 
     name = "Name"
@@ -266,7 +264,7 @@ theme = "elate"
   # Footer section
   [params.footer]
     enable = true
-    copyright = '&copy; Elate Free HTML5. All Rights Reserved. <br>Created by <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> Images: <a href="http://pexels.com/" target="_blank">Pexels</a>, <a href="http://plmd.me/" target="_blank">plmd.me</a> <br>Hugo port by: <a href="https://github.com/saey55" target="_blank">saey55</a>'
+    copyright = '&copy; NDItech. All Rights Reserved. <br>Hugo port by: <a href="https://github.com/saey55" target="_blank">saey55</a>'
     links = [
         ["icon-twitter", "#twitter"],
         ["icon-facebook", "#facebook"],
