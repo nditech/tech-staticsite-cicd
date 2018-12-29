@@ -5,13 +5,13 @@ function init() {
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     // var myLatlng = new google.maps.LatLng(40.71751, -73.990922);
-    var myLatlng = new google.maps.LatLng(51.0825523,3.574402,11);
+    var myLatlng = new google.maps.LatLng(10,-1);
     // 39.399872
     // -8.224454
     
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
-        zoom: 7,
+        zoom: 3,
 
         // The latitude and longitude to center the map (always required)
         center: myLatlng,
@@ -30,16 +30,16 @@ function init() {
     // Create the Google Map using out element and options defined above
     var map = new google.maps.Map(mapElement, mapOptions);
     
-    var addresses = ['Ghent'];
+    var observations = ['Côte d’Ivoire', 'Libya','Mali','Nigeria','Serbia','Tunisia','Zimbabwe'];
 
-    for (var x = 0; x < addresses.length; x++) {
-        $.getJSON('//maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
+    for (var x = 0; x < observations.length; x++) {
+        $.getJSON('//maps.googleapis.com/maps/api/geocode/json?address='+observations[x]+'&sensor=false', null, function (data) {
             var p = data.results[0].geometry.location
             var latlng = new google.maps.LatLng(p.lat, p.lng);
             new google.maps.Marker({
                 position: latlng,
                 map: map,
-                icon: 'images/loc.png'
+                icon: 'https://img.icons8.com/material/24/000000/user-location.png'
             });
 
         });

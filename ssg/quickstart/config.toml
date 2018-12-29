@@ -46,6 +46,9 @@ theme = "elate"
   [params.hero]
     title = "2018, Year in review"
     subtitle = 'A Year of Human Centered Design at NDI, what we learned by letting user feedback shape the solutions we build for you.'
+    # TODO wire-up CTA button
+    url = "https://www.demworks.org/citizen-centered-designing-technology-solutions-democracy-ndi"
+    button = 'More on Human Centered Design'
  
   # Intro section
   # Available icons: http://simplelineicons.com/
@@ -61,8 +64,8 @@ theme = "elate"
     img = "img_7.jpg"
 
   [[params.intro.item]]
-    title = "Data Viz"
-    description = "Helping your stakeholders understand and see the impact of their contributions."
+    title = "Data Visualization"
+    description = "Helping your stakeholders understand by interactive visual analysis and see the impact of their contributions."
     url = "#"
     button = "Learn More"
     icon = "icon-graph"
@@ -70,14 +73,14 @@ theme = "elate"
 
   [[params.intro.item]]
     title = "Distance Learning"
-    description = "Helping empower citizens with self-paced and interactive educational material."
+    description = "Helping empower citizens with self-paced knowledge material and fun interactive educational content."
     url = "http://techcivica.ndi.org"
     button = "Sign-up on TechCivica"
     icon = "icon-badge"
     img = "img_10.jpg"
 
   [params.intro.video]
-    enable = true
+    enable = false
     title = "Watch the video"
     icon = "icon-play2"
     url = "https://www.youtube.com/watch?v=frJ3swCd7Mk"
@@ -85,10 +88,10 @@ theme = "elate"
  # Counters section
   [params.counters]
     enable = true
+    map = true
     title = "2018, by the numbers"
     subtitle = "Elections observed"
     background = "full_image_1.jpg"
-    footertext = '<a href="#" target="_blank">Learn more</a>'
 
     [[params.counters.item]]
       description = "Websites and applications delivered"
@@ -121,10 +124,12 @@ theme = "elate"
       to = 72
       interval = 50
       speed = 5000
+    [[params.counters.row]]
+      title = "Apollo deployments"
 
   # Tools section
   [params.tools]
-    enable = true
+    enable = false
     title = "Tools"
     description = "The Democracy Toolkit (DemTools) is designed to help empower civil society organizations, political parties and legislatures around the world by applying technology solutions to common challenges."
 
@@ -241,8 +246,8 @@ theme = "elate"
 
   # Contact section
   [params.contact]
-    enable = true
-    map = true
+    enable = false
+    map = false
     form = true
     title = "Get in touch"
     description = "Something witty to say in place of a template language"

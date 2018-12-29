@@ -17,13 +17,18 @@
 				</div>
 			{{ end }}
 			</div>
+			<div class="row"><hr /></div>
 			<div class="col-md-12 section-heading text-center to-animate">
+					
 				<h2>{{ .Site.Params.counters.subtitle | markdownify }}</h2>
 			</div>
-			<div class="row">
-				{{ if .Site.Params.contact.map }}
-					<div id="map" class="to-animate"></div>
-				{{ end }}
-			</div>
+			
 		</div>
+
+		<div class="col-md-12 section-heading text-center">
+			{{ if .Site.Params.counters.map }}
+				<div id="map" class="to-animate"></div>
+			{{ end }}
+		</div>
+
 	</section>
