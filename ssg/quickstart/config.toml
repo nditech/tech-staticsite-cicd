@@ -14,7 +14,7 @@ theme = "elate"
   email = "nackerson@ndi.org"
 
   # Google Maps Javascript API Key (if not set will default to not passing a key)
-  googleMapsApiKey = "AIzaSyBrSP4LecvFJjFp9zeiTjoe41ZS1YTcsEA"
+  googleMapsApiKey = "AIzaSyBC50RccdoRt-0eQmU7EFhKZx-nfQ6aV3I"
 
   # Navigation
   [params.navigation]
@@ -48,7 +48,7 @@ theme = "elate"
     subtitle = 'A Year of Human Centered Design at NDI, what we learned by letting user feedback shape the solutions we build for you.'
     # TODO wire-up CTA button
     url = "https://www.demworks.org/citizen-centered-designing-technology-solutions-democracy-ndi"
-    button = 'More on Human Centered Design'
+    # cta = 'More on Human Centered Design'
  
   # Intro section
   # Available icons: http://simplelineicons.com/

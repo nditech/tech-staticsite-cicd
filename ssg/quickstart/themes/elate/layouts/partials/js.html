@@ -15,9 +15,11 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/magnific-popup-options.js"></script>
 	<!-- Google Map -->
+	
 	{{ if .Site.Params.counters.map }}
 		{{ if .Site.Params.googleMapsApiKey }}
-		<script src="https://maps.googleapis.com/maps/api/js?key={{ .Site.Params.googleMapsApiKey }}"></script>
+		<!-- <script src="https://maps.googleapis.com/maps/api/js?key={{ .Site.Params.googleMapsApiKey }}"></script> -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC50RccdoRt-0eQmU7EFhKZx-nfQ6aV3I"></script>
 		{{ else }}
 		<script src="https://maps.googleapis.com/maps/api/js"></script>
 		{{ end }}

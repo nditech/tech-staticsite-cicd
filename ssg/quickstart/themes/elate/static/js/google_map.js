@@ -1,6 +1,7 @@
 
 var google;
 
+
 function init() {
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
@@ -275,18 +276,23 @@ function init() {
     var map = new google.maps.Map(mapElement, mapOptions);
     
     var observations = ['Côte d’Ivoire', 'Libya','Mali','Nigeria','Serbia','Tunisia','Zimbabwe'];
-
+    // var observations = $.getJSON("data/elections.json");
+    
+    var MY_API_KEY = "AIzaSyBYFJ3tnlr9X5D_xeot0JJp30XnAwht3E4";
     for (var x = 0; x < observations.length; x++) {
-        $.getJSON('//maps.googleapis.com/maps/api/geocode/json?address='+observations[x]+'&sensor=false', null, function (data) {
-            var p = data.results[0].geometry.location
-            var latlng = new google.maps.LatLng(p.lat, p.lng);
-            new google.maps.Marker({
-                position: latlng,
-                map: map,
-                icon: 'images/loc.png'
-                // icon: 'https://img.icons8.com/material/24/000000/user-location.png
-            });
-
+        $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address='+observations[x]+'&sensor=false' + '&key=' + MY_API_KEY, null, function (data) {
+            console.log(data);
+            if (data.results.length > 0) {
+                var p = data.results[0].geometry.location
+                
+                var latlng = new google.maps.LatLng(p.lat, p.lng);
+                new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    icon: 'images/loc.png'
+                    // icon: 'https://img.icons8.com/material/24/000000/user-location.png
+                });
+            }
         });
     }
     
