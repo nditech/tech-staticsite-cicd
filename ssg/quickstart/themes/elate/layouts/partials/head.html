@@ -2,20 +2,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title> {{ .Title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--     <meta name="description" content="Free HTML5 Template by FREEHTML5.CO - Hugo port by Pieter Saey" />
-    <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive, hugo, static site" />
-    <meta name="author" content="FREEHTML5.CO / Hugo port " />
- -->
+
     {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
     {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
     {{ with .Site.LanguageCode }}<meta http-equiv="content-language" content="{{ . }}" />{{ end }}
 
-  <!-- HUGO TEMPLATE PORTED BY Pieter Saey
-
-    Website:        http://saey55.gitlab.io/pietercv
-    Email:          saeypieter@gmail.com
+  <!-- HUGO TEMPLATE PORTED BY Pieter Saey Modified by Noble A.
+   
     Twitter:        http://twitter.com/saey55
-    
 
     //////////////////////////////////////////////////////
      -->
@@ -48,7 +42,7 @@
     <link rel="canonical" href="{{ .Permalink }}"/>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="https://dem.tools/sites/default/files/favicon.ico">
 
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
     
@@ -63,19 +57,6 @@
     <!-- Bootstrap  -->
     <link rel="stylesheet" href="css/bootstrap.css">
 
-    <!-- 
-    Default Theme Style 
-    You can change the style.css (default color purple) to one of these styles
-    
-    1. pink.css
-    2. blue.css
-    3. turquoise.css
-    4. orange.css
-    5. lightblue.css
-    6. brown.css
-    7. green.css
-
-    -->
     <link rel="stylesheet" href="css/style.css">
 
     <!--

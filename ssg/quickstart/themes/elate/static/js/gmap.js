@@ -1,25 +1,86 @@
 
 var google;
 
-
-function init() {
-    // Basic options for a simple Google Map
-    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-    // var myLatlng = new google.maps.LatLng(40.71751, -73.990922);
-    var myLatlng = new google.maps.LatLng(20,31);
-    // 39.399872
-    // -8.224454
+function initialize() {
+    var myLatlng = new google.maps.LatLng(8.7832, 34.5085);
     
-    var mapOptions = {
-        // How zoomed in you want the map to start at (always required)
+    var ivorycoastString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">2018 Côte d’Ivoire</h1>'+
+            '<div id="bodyContent">'+
+            '<h4><b>869</b>, Number of observers who sent in data </h4>'+
+            '</div>'+
+            '</div>';
+
+    var libyaString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Libya</h1>'+
+            '<div id="bodyContent">'+
+            '<h4>Libyan leaders postponed national elections to Spring 2019 due to spike in violence </h4>'+
+            '</div>'+
+            '<p><a href="https://www.reuters.com/article/us-libya-security/rival-libya-leaders-meet-for-first-time-since-may-pm-oks-2019-vote-idUSKCN1NI12Y" target="_blank">Reuters</a> '+
+            '(NOVEMBER 13, 2018).</p>'+
+ 
+            '</div>';
+    var maliString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">2018 Mali</h1>'+
+            '<div id="bodyContent">'+
+            '<h4>had <b>1179</b> of observers send in data through Apollo </h4>'+
+            '</div>'+
+            '</div>';
+
+    var nigeriaString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">2018 Nigeria</h1>'+
+            '<div id="bodyContent">'+
+            '<h4>had <b>1868</b> of observers who sent in data through Apollo</h4>'+
+            '</div>'+
+            '</div>';
+
+    var serbiaString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">2018 Serbia</h1>'+
+            '<div id="bodyContent">'+
+            '<h4><b>~500</b> citizens surveyed about their perception of disinformation with Apollo GeoODK integration</h4>'+
+            '</div>'+
+            '</div>';
+    var tunisiaString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">2018 Tunisia</h1>'+
+            '<div id="bodyContent">'+
+            '<h4>had <b>2118</b> of observers send in data with Apollo </h4>'+
+            '</div>'+
+            '</div>';
+    var zimbabweString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">2018 Zimbabwe</h1>'+
+            '<div id="bodyContent">'+
+            '<h4>had <b>750</b> of observers send in data with Apollo</h4>'+
+            '</div>'+
+            '</div>';
+
+    var location = [
+        ['Côte d’Ivoire', 7.5400, 5.5471, ivorycoastString],
+        ['Libya', 26.3351, 17.2283,libyaString],
+        ['Mali', 17.5707, 3.9962, maliString],
+        ['Nigeria', 9.0820, 8.6753, nigeriaString],
+        ['Serbia', 44.0165, 21.0059, serbiaString],
+        ['Tunisia', 33.8869, 9.5375, tunisiaString],
+        ['Zimbabwe', 19.0154, 29.1549, zimbabweString]
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 3,
-
-        // The latitude and longitude to center the map (always required)
         center: myLatlng,
-
-        // How you would like to style the map. 
         scrollwheel: false,
-        //styles: [{"featureType":"administrative.land_parcel","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"hue":"#f49935"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"hue":"#fad959"}]},{"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"hue":"#a1cdfc"},{"saturation":30},{"lightness":49}]}]
         styles: [
             {
               "elementType": "geometry",
@@ -264,48 +325,28 @@ function init() {
               ]
             }
           ]
-    };
+    });
 
-    
+    for (var i = 0; i < location.length; i++) {
 
-    // Get the HTML DOM element that will contain your map 
-    // We are using a div with id="map" seen below in the <body>
-    var mapElement = document.getElementById('map');
+        var infowindow = new google.maps.InfoWindow({
+            content: location[i][3]
+          });
 
-    // Create the Google Map using out element and options defined above
-    var map = new google.maps.Map(mapElement, mapOptions);
-    
-    //var observations = ['Côte d’Ivoire', 'Libya','Mali','Nigeria','Serbia','Tunisia','Zimbabwe'];
-    var elections = [['Côte d’Ivoire', 'elec 1'], ['Libya', 'elec 2'],['Mali', 'elec 3'],['Nigeria', 'elec 4'],['Serbia', 'elec 5'],['Tunisia', 'elec 6'],['Zimbabwe', 'elec 7']];
-    // var observations = $.getJSON("data/elections.json");
-    
-    var MY_API_KEY = "AIzaSyBYFJ3tnlr9X5D_xeot0JJp30XnAwht3E4";
-    
-    var infowindow = new google.maps.InfoWindow();
-    for (var x = 0; x < elections.length; x++) {
-        $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address='+elections[x]+'&sensor=false' + '&key=' + MY_API_KEY, null, function (data) {
-            
-            if (data.results.length > 0) {
-                
-                var p = data.results[0].geometry.location;
-                //console.log(p);
-                var latlng = new google.maps.LatLng(p.lat, p.lng);
-                new google.maps.Marker({
-                    position: latlng,
-                    map: map,
-                    icon: 'images/loc.png'
-                    //title: elections[x][1]
-                    // icon: 'https://img.icons8.com/material/24/000000/user-location.png
-                });
-                
-                //TODO add click listner for google.maps.InfoWindow()
-            }
-
-            var contentMarkers = new google.maps.Marker({
-                //
-            });
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(location[i][1], location[i][2]),
+            map: map,
+            title: location[i][0],
+            icon: 'images/loc.png'
         });
+
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+                infowindow.setContent(location[i][3]);
+                infowindow.open(map, marker);
+            }
+        })(marker, i)); 
     }
-    
 }
-google.maps.event.addDomListener(window, 'load', init);
+
+initialize();

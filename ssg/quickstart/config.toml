@@ -1,7 +1,7 @@
 # Page settings
 baseURL = "http://dem.tools/"
 languageCode = "en-us"
-title = "2018 Year in Review | NDI Dem Tools"
+title = "2018 Year in Review | NDI DemTools"
 theme = "elate"
 
 [params]
@@ -14,11 +14,11 @@ theme = "elate"
   email = "nackerson@ndi.org"
 
   # Google Maps Javascript API Key (if not set will default to not passing a key)
-  googleMapsApiKey = "AIzaSyBC50RccdoRt-0eQmU7EFhKZx-nfQ6aV3I"
+  googleMapsApiKey = "AIzaSyBYFJ3tnlr9X5D_xeot0JJp30XnAwht3E4"
 
   # Navigation
   [params.navigation]
-    brand = "DemTools by NDItech"
+    brand = "DemTools by NDI"
     home = "Home"
     counters = "Stats"
     tools = "Tools"
@@ -38,8 +38,8 @@ theme = "elate"
 
     # postpended links
     [[menu.postpend]]
-      url = "https://www.ndi.org"
-      name = "NDI"
+      url = "https://www.nditech.org"
+      name = "NDI Tech"
       weight = 10
   
   # Hero section
@@ -90,7 +90,7 @@ theme = "elate"
     enable = true
     map = true
     title = "2018, by the numbers"
-    subtitle = "Elections observed"
+    subtitle = "Elections observed with Apollo"
     background = "full_image_1.jpg"
 
     [[params.counters.item]]
@@ -124,6 +124,7 @@ theme = "elate"
       to = 72
       interval = 50
       speed = 5000
+      
     [[params.counters.row]]
       title = "Apollo deployments"
 

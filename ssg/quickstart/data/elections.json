@@ -2,31 +2,38 @@
     "markers": [
       {
         "name": "Côte d’Ivoire",
-        "position": [7.5400, 5.5471]
+        "position": [7.5400, 5.5471],
+        "title": "Country 1"
       },
       {
         "name": "Libya",
-        "location": [26.3351, 17.2283]
+        "location": [26.3351, 17.2283],
+        "title": "Country 2"
       },
       {
         "name": "Mali",
-        "location": [17.5707, 3.9962]
+        "location": [17.5707, 3.9962],
+        "title": "Country 3"
       },
       {
         "name": "Nigeria",
-        "location": [9.0820, 8.6753]
+        "location": [9.0820, 8.6753],
+        "title": "Country 4"
       },
       {
         "name": "Serbia",
-        "location": [44.0165, 21.0059]
+        "location": [44.0165, 21.0059],
+        "title": "Country 5"
       },
       {
         "name": "Tunisia",
-        "location": [33.8869, 9.5375]
+        "location": [33.8869, 9.5375],
+        "title": "Country 6"
       },
       {
         "name": "Zimbabwe",
-        "location": [19.0154, 29.1549]
+        "location": [19.0154, 29.1549],
+        "title": "Country 7"
       }
     ]
   }

@@ -1,1 +1,14 @@
+# Obfuscate settings from public repo
 ./ssg/quickstart/config.toml
+# Hugo defailt output dir
+/public
+
+## OS Files
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# OSX
+.DS_Store
