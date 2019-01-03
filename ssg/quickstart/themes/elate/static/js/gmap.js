@@ -9,7 +9,7 @@ function initialize() {
             '</div>'+
             '<h1 id="firstHeading" class="firstHeading">2018 Côte d’Ivoire</h1>'+
             '<div id="bodyContent">'+
-            '<h4><b>869</b>, Number of observers who sent in data </h4>'+
+            '<h4>had <b>869</b> of observers send in data with Apollo</h4>'+
             '</div>'+
             '</div>';
 
