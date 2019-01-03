@@ -1,7 +1,7 @@
 # Obfuscate settings from public repo
 ./ssg/quickstart/config.toml
 # Hugo defailt output dir
-/public
+./ssg/quickstart/public
 
 ## OS Files
 # Windows
