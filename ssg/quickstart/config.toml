@@ -90,7 +90,7 @@ theme = "elate"
     enable = true
     map = true
     title = "2018, by the numbers"
-    subtitle = "Elections observed with Apollo"
+    subtitle = "Apollo Election Software"
     background = "full_image_1.jpg"
 
     [[params.counters.item]]
@@ -180,27 +180,27 @@ theme = "elate"
 
   # Services section
   [params.services]
-    enable = false
-    title = "Services"
-    description = "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    enable = true
+    title = "Ahead for 2019"
+    description = "Looking ahead this is what to expect from the technology team. TODO Update icons and text."
 
     [[params.services.item]]
-      title = "Brand &amp; Strategy"
-      description = "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean"
+      title = "Continued data privacy focus"
+      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
       icon = "icon-anchor"
 
     [[params.services.item]]
-      title = "Web &amp; Interface"
-      description = "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean"
+      title = "A “One CRM” Initiative"
+      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
       icon = "icon-layers2"
     [[params.services.item]]
-      title = "Photo &amp; Video"
-      description = "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean"
+      title = "Reducing the time to deliver websites"
+      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
       icon = "icon-video2"
 
       [[params.services.item]]
-      title = "CMS &amp; eCommerce"
-      description = "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean"      
+      title = "New HR System (Ultipro)"
+      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."      
       icon = "icon-monitor"
 
   # About section
