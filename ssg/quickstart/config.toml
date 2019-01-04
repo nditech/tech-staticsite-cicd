@@ -16,14 +16,17 @@ theme = "elate"
   # Google Maps Javascript API Key (if not set will default to not passing a key)
   googleMapsApiKey = "AIzaSyBYFJ3tnlr9X5D_xeot0JJp30XnAwht3E4"
 
+  # Google Tag Manager Container ID
+  gtagmanagerID = "GTM-5NL7SGB"
+
   # Navigation
   [params.navigation]
     brand = "DemTools by NDI"
     home = "Home"
-    counters = "Stats"
+    counters = "2018 Stats"
     tools = "Tools"
     testimonials = "Testimonials"
-    services = "Services"
+    services = "2019 Initiatives"
     about = "About"
     contact = "Contact"
 
@@ -44,8 +47,8 @@ theme = "elate"
   
   # Hero section
   [params.hero]
-    title = "2018, Year in review"
-    subtitle = 'A Year of Human Centered Design at NDI, what we learned by letting user feedback shape the solutions we build for you.'
+    title = "2018 Year in Review"
+    subtitle = 'A Year of Human Centered Design at NDI: what we learned by letting user feedback shape the solutions we build for you.'
     # TODO wire-up CTA button
     url = "https://www.demworks.org/citizen-centered-designing-technology-solutions-democracy-ndi"
     # cta = 'More on Human Centered Design'
@@ -187,21 +190,21 @@ theme = "elate"
     [[params.services.item]]
       title = "Continued data privacy focus"
       description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
-      icon = "icon-anchor"
+      icon = "icon-lock"
 
     [[params.services.item]]
       title = "A “One CRM” Initiative"
       description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
-      icon = "icon-layers2"
+      icon = "icon-people"
     [[params.services.item]]
       title = "Reducing the time to deliver websites"
       description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
-      icon = "icon-video2"
+      icon = "icon-cloud-upload"
 
       [[params.services.item]]
-      title = "New HR System (Ultipro)"
+      title = "Launch of new Software Feedback and Ideas Portal"
       description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."      
-      icon = "icon-monitor"
+      icon = "icon-layers"
 
   # About section
   [params.about]
@@ -270,7 +273,7 @@ theme = "elate"
   # Footer section
   [params.footer]
     enable = true
-    copyright = '&copy; NDItech. All Rights Reserved. <br>Hugo port by: <a href="https://github.com/saey55" target="_blank">saey55</a>'
+    copyright = '&copy; NDItech. All Rights Reserved. <br>Hugo port by: <a href="https://github.com/saey55" rel="noreferrer" target="_blank">saey55</a>'
     links = [
         ["icon-twitter", "#twitter"],
         ["icon-facebook", "#facebook"],

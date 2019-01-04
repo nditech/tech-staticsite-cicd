@@ -7,6 +7,16 @@
     {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
     {{ with .Site.LanguageCode }}<meta http-equiv="content-language" content="{{ . }}" />{{ end }}
 
+  <!-- Google Tag Manager -->  
+  
+   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+   })(window,document,'script','dataLayer','{{ .Site.Params.gtagmanagerID }}');</script>
+
+   <!-- End Google Tag Manager -->
+
   <!-- HUGO TEMPLATE PORTED BY Pieter Saey Modified by Noble A.
    
     Twitter:        http://twitter.com/saey55
@@ -74,3 +84,5 @@
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
     <![endif]-->
+
+    

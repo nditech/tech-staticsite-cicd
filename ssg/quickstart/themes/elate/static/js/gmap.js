@@ -3,7 +3,7 @@ var google;
 
 function initialize() {
     var myLatlng = new google.maps.LatLng(8.7832, 34.5085);
-    
+    // TODO: [Refactor] Consider shortcodes or partials for this content
     var ivorycoastString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
