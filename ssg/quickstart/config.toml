@@ -23,10 +23,10 @@ theme = "elate"
   [params.navigation]
     brand = "DemTools by NDI"
     home = "Home"
-    counters = "2018 Stats"
-    tools = "Tools"
+    counters = "2018 Stats"    
     testimonials = "Testimonials"
     services = "2019 Initiatives"
+    tools = "Products and Services"
     about = "About"
     contact = "Contact"
 
@@ -83,7 +83,7 @@ theme = "elate"
     img = "img_10.jpg"
 
   [params.intro.video]
-    enable = false
+    enable = true
     title = "Watch the video"
     icon = "icon-play2"
     url = "https://www.youtube.com/watch?v=frJ3swCd7Mk"
@@ -131,9 +131,35 @@ theme = "elate"
     [[params.counters.row]]
       title = "Apollo deployments"
 
+  # Services section
+  [params.services]
+    enable = true
+    title = "Ahead for 2019"
+    description = "Looking ahead this is what to expect from the technology team. TODO Update icons and text."
+
+    [[params.services.item]]
+      title = "Continued data privacy focus"
+      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
+      icon = "icon-lock"
+
+    [[params.services.item]]
+      title = "A “One CRM” Initiative"
+      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
+      icon = "icon-people"
+    [[params.services.item]]
+      title = "Reducing the time to deliver websites"
+      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
+      icon = "icon-cloud-upload"
+
+      [[params.services.item]]
+      title = "Launch of new Software Feedback and Ideas Portal"
+      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."      
+      icon = "icon-layers"
+
+
   # Tools section
   [params.tools]
-    enable = false
+    enable = true
     title = "Tools"
     description = "The Democracy Toolkit (DemTools) is designed to help empower civil society organizations, political parties and legislatures around the world by applying technology solutions to common challenges."
 
@@ -154,6 +180,24 @@ theme = "elate"
       alt = "Image3"
       title = "DemGames"
       subtitle = "Gamified learning platform to provide fun, additive educational experiences at scale."
+
+    [[params.work.row]]
+      img = "work_4.jpg"
+      alt = "Image4"
+      title = "Fix My Community"
+      subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel sem pretium."
+
+    [[params.work.row]]
+      img = "work_5.jpg"
+      alt = "Image5"
+      title = "Digital Security"
+      subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel sem pretium."
+
+    [[params.work.row]]
+      img = "work_6.jpg"
+      alt = "Image6"
+      title = "Human Centered Design"
+      subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel sem pretium."
    
 
   # Testimonials section
@@ -181,31 +225,7 @@ theme = "elate"
       alt = "Person3"
     
 
-  # Services section
-  [params.services]
-    enable = true
-    title = "Ahead for 2019"
-    description = "Looking ahead this is what to expect from the technology team. TODO Update icons and text."
-
-    [[params.services.item]]
-      title = "Continued data privacy focus"
-      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
-      icon = "icon-lock"
-
-    [[params.services.item]]
-      title = "A “One CRM” Initiative"
-      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
-      icon = "icon-people"
-    [[params.services.item]]
-      title = "Reducing the time to deliver websites"
-      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
-      icon = "icon-cloud-upload"
-
-      [[params.services.item]]
-      title = "Launch of new Software Feedback and Ideas Portal"
-      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."      
-      icon = "icon-layers"
-
+  
   # About section
   [params.about]
     enable = false
