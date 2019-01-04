@@ -17,6 +17,10 @@
 		{{ if .Site.Params.counters.enable }}
         	{{ partial "counters.html" .}}
 		{{ end }}
+		
+		{{ if .Site.Params.services.enable }}
+        	{{ partial "services.html" .}}
+		{{ end }}
 
 		{{ if .Site.Params.tools.enable }}
        		{{ partial "work.html" .}}
@@ -24,10 +28,6 @@
 
 		{{ if .Site.Params.testimonials.enable }}
         	{{ partial "testimonials.html" .}}
-		{{ end }}
-
-		{{ if .Site.Params.services.enable }}
-        	{{ partial "services.html" .}}
 		{{ end }}
 
 		{{ if .Site.Params.about.enable }}
