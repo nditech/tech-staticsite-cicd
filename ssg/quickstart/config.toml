@@ -179,21 +179,21 @@ theme = "elate"
       img = "work_3.jpg"
       alt = "Image3"
       title = "DemGames"
-      subtitle = "Gamified learning platform to provide fun, additive educational experiences at scale."
+      subtitle = "Gamified learning platform to provide interactive, fun, and additive educational experiences at scale."
 
-    [[params.work.row]]
+    [[params.tools.row]]
       img = "work_4.jpg"
       alt = "Image4"
       title = "Fix My Community"
       subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel sem pretium."
 
-    [[params.work.row]]
+    [[params.tools.row]]
       img = "work_5.jpg"
       alt = "Image5"
       title = "Digital Security"
       subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel sem pretium."
 
-    [[params.work.row]]
+    [[params.tools.row]]
       img = "work_6.jpg"
       alt = "Image6"
       title = "Human Centered Design"
