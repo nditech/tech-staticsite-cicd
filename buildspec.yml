@@ -3,41 +3,9 @@ version: 0.2
 phases:
   build:
     commands:
-      - ls
-
+      - mkdir build-output
+      - cp -R sg/quickstart/public build-output
 artifacts:
   files:
-    - sg/quickstart/public/*
-  discard-paths: yes
-  secondary-artifacts:
-    artifact1:
-      files:
-        - sg/quickstart/public/css/blue.css
-      discard-paths: yes
-      base-directory: public
-    artifact2:
-      files:
-        - sg/quickstart/public/images/favicon.ico
-      discard-paths: yes
-      base-directory: public
-  # files:
-  #   - sg/quickstart/public/css/*
-  # discard-paths: yes
-  # base-directory: css
-# artifactIdentifier3:
-#   files:
-#     - sg/quickstart/public/fonts/**/*
-#   discard-paths: yes
-#   base-directory: fonts
-  # files:
-  #   - sg/quickstart/public/images/*
-  # discard-paths: yes
-  # base-directory: images
-  # files:
-  #   - sg/quickstart/public/js/*
-  # discard-paths: yes
-  # base-directory: js
-  # files:
-  #   - sg/quickstart/public/tags/*
-  # discard-paths: yes
-  # base-directory: tags
+    - build-output/**/*
+  
