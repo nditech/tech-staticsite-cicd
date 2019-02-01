@@ -9,35 +9,34 @@ artifacts:
   files:
     - ssg/quickstart/public/*
   discard-paths: yes
-  # base-directory: public
-  # secondary-artifacts:
-  #   artifactIdentifier1:
-  #     files:
-  #       - ssg/quickstart/public/categories/*
-  #     discard-paths: yes
-  #     base-directory: categories
-  #   artifactIdentifier2:
-  #     files:
-  #       - sg/quickstart/public/css/*
-  #     discard-paths: yes
-  #     base-directory: css
-  #   artifactIdentifier3:
-  #     files:
-  #       - sg/quickstart/public/fonts/**/*
-  #     discard-paths: yes
-  #     base-directory: fonts
-  #   artifactIdentifier4:
-  #     files:
-  #       - sg/quickstart/public/images/*
-  #     discard-paths: yes
-  #     base-directory: images
-  #   artifactIdentifier5:
-  #     files:
-  #       - sg/quickstart/public/js/*
-  #     discard-paths: yes
-  #     base-directory: js
-  #   artifactIdentifier6:
-  #     files:
-  #       - sg/quickstart/public/tags/*
-  #     discard-paths: yes
-  #     base-directory: tags
+  secondary-artifacts:
+    artifactIdentifier1:
+      files:
+        - ssg/quickstart/public/categories/*
+      discard-paths: yes
+      base-directory: categories
+    artifactIdentifier2:
+      files:
+        - sg/quickstart/public/css/*
+      discard-paths: yes
+      base-directory: css
+    # artifactIdentifier3:
+    #   files:
+    #     - sg/quickstart/public/fonts/**/*
+    #   discard-paths: yes
+    #   base-directory: fonts
+    artifactIdentifier4:
+      files:
+        - sg/quickstart/public/images/*
+      discard-paths: yes
+      base-directory: images
+    artifactIdentifier5:
+      files:
+        - sg/quickstart/public/js/*
+      discard-paths: yes
+      base-directory: js
+    artifactIdentifier6:
+      files:
+        - sg/quickstart/public/tags/*
+      discard-paths: yes
+      base-directory: tags
