@@ -8,15 +8,17 @@ phases:
   build:
     commands:
       # - zip -r public.zip ./ssg/quickstart/public
-      - ls
-      # - mkdir build-output
-      # - cp -R ssg/quickstart/public/ build-output
-  # post_build:
-  #   commands:
+      # - ls
+      - mkdir build-output
+      - cp -R ssg/quickstart/public/ build-output
+  post_build:
+    commands:
+      - mv build-output/**/* ./
+      - rm -R build-output
   #     - unzip public.zip -d public
 artifacts:
   # type: zip
   files:
-    - ssg/quickstart/public/**/*
+    - '**/*'
   # discard-paths: yes
   # base-directory: '*/public'
