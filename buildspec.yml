@@ -8,18 +8,7 @@ phases:
       # - cp -R ssg/quickstart/public/ build-output
 artifacts:
   files:
-    - ssg/quickstart/public/index.html
-  discard-paths: yes
-  base-directory: public
-  secondary-artifacts:
-    artifact1:
-      files:
-        - ssg/quickstart/public/css/blue.css
-      discard-paths: yes
-      base-directory: public
-    artifact2:
-      files:
-        - ssg/quickstart/public/images/favicon.ico
-      discard-paths: yes
-      base-directory: public
-  
+    - ssg/quickstart/public/**/*
+cache:
+  paths:
+    - ./
