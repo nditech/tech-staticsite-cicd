@@ -17,6 +17,6 @@ phases:
 artifacts:
   # type: zip
   files:
-    - '**/*'
-  discard-paths: yes
-  base-directory: '*/public'
+    - ssg/quickstart/public/**/*
+  # discard-paths: yes
+  # base-directory: '*/public'
