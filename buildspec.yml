@@ -13,10 +13,10 @@ phases:
       - cp -R ssg/quickstart/public/ build-output
   post_build:
     commands:
-      - rm -r !(build-output)
+      # - rm -r !(build-output)
       - mv -rf build-output/**/* ./
       - mv -rf build-output/* ./
-      - rm -R build-output
+      - rm -R build-output *.yml LICENSE README*
   #     - unzip public.zip -d public
 artifacts:
   # type: zip
