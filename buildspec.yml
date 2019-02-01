@@ -9,7 +9,6 @@ artifacts:
   files:
     - ssg/quickstart/public/*
   discard-paths: yes
-  files:
     - ssg/quickstart/public/categories/*
   discard-paths: yes
   base-directory: categories
