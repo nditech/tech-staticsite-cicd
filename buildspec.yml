@@ -8,10 +8,8 @@ phases:
 artifacts:
   files:
     - ssg/quickstart/public/*
-  discard-paths: yes
     - ssg/quickstart/public/categories/*
   discard-paths: yes
-  base-directory: categories
   # files:
   #   - sg/quickstart/public/css/*
   # discard-paths: yes
