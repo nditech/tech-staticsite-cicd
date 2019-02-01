@@ -8,7 +8,7 @@ phases:
 artifacts:
   files:
     - sg/quickstart/public/*
-  base-directory: '*/public'
+  base-directory: public
   # files:
   #   - sg/quickstart/public/css/*
   # discard-paths: yes
