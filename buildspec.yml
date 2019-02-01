@@ -8,5 +8,5 @@ phases:
 artifacts:
   files:
     - build-output/**/*
-  discard-paths: yes
+  base-directory: build-output
   
