@@ -4,7 +4,7 @@ phases:
   build:
     commands:
       - mkdir build-output
-      - cp -R ssg/quickstart/public/ build-output
+      - find . -type d -name public -exec cp -R {} build-output \;
       - find . -mindepth 1 -name build-output -prune -o -exec rm -rf {} +
   post_build:
     commands:
