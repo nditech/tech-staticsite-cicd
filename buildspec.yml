@@ -1,22 +1,15 @@
 version: 0.2
 
 phases:
-  # install:
-  #   commands:
-  #     - sudo apt-get install zip
-  #     - sudo apt-get install unzip
   build:
     commands:
-      # - zip -r public.zip ./ssg/quickstart/public
-      # - ls
       - mkdir build-output
       - cp -R ssg/quickstart/public/ build-output
   post_build:
     commands:
-      # - rm -r !(build-output)
       - mv build-output/**/* ./
       - mv build-output/* ./
-      - rm -R build-output *.yml LICENSE README*
+      - rm -R build-output *.yml LICENSE README* .git*
   #     - unzip public.zip -d public
 artifacts:
   # type: zip
