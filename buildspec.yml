@@ -10,10 +10,6 @@ phases:
       - mv build-output/**/* ./
       - mv build-output/* ./
       - rm -R build-output *.yml LICENSE README* .git*
-  #     - unzip public.zip -d public
 artifacts:
-  # type: zip
   files:
     - '**/*'
-  # discard-paths: yes
-  # base-directory: 'build-output'
