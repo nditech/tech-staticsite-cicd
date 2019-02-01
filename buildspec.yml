@@ -7,6 +7,5 @@ phases:
       - cp -R ssg/quickstart/public/ build-output
 artifacts:
   files:
-    - 'build-output/**/*'
-  base-directory: build-output
+    - build-output/**/*
   
