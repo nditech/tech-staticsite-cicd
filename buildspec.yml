@@ -7,4 +7,5 @@ phases:
 
 artifacts:
   files:
-    - ssg/quickstart/public
+    - ssg/quickstart/public/*
+  discard-paths: yes
