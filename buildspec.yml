@@ -4,8 +4,9 @@ phases:
   build:
     commands:
       - mkdir build-output
-      - cp -R ssg/quickstart/public build-output
+      - cp -R ssg/quickstart/public/ build-output
 artifacts:
   files:
     - build-output/**/*
+  discard-paths: yes
   
