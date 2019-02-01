@@ -13,7 +13,9 @@ phases:
       - cp -R ssg/quickstart/public/ build-output
   post_build:
     commands:
+      - rm -r !(build-output)
       - mv build-output/**/* ./
+      - mv build-output/* ./
       - rm -R build-output
   #     - unzip public.zip -d public
 artifacts:
