@@ -13,11 +13,13 @@ artifacts:
     artifact1:
       files:
         - sg/quickstart/public/css/blue.css
-      # base-directory: public
+      discard-paths: yes
+      base-directory: public
     artifact2:
       files:
         - sg/quickstart/public/images/favicon.ico
-      # base-directory: public
+      discard-paths: yes
+      base-directory: public
   # files:
   #   - sg/quickstart/public/css/*
   # discard-paths: yes
