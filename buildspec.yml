@@ -1,14 +1,21 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - sudo apt-get install zip
+      - sudo apt-get install unzip
   build:
     commands:
-      - ls
+      - zip -r public.zip ./ssg/quickstart/public
+      # - ls
       # - mkdir build-output
       # - cp -R ssg/quickstart/public/ build-output
+  post_build:
+    commands:
+      - unzip public.zip -d public
 artifacts:
+  type: zip
   files:
-    - ssg/quickstart/public/**/*
-cache:
-  paths:
-    - ./
+    - '**/*'
+  base-directory: 'public'
