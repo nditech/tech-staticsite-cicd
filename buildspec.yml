@@ -8,6 +8,7 @@ phases:
 artifacts:
   files:
     - sg/quickstart/public/*
+    - sg/quickstart/public/images/*
   base-directory: public
   # files:
   #   - sg/quickstart/public/css/*
