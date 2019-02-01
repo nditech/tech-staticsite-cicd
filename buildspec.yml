@@ -8,3 +8,5 @@ phases:
 artifacts:
   files:
     - ssg/quickstart/public/**/*
+  base-directory: public
+  
