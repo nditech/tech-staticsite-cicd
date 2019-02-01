@@ -11,9 +11,9 @@ phases:
       # - ls
       # - mkdir build-output
       # - cp -R ssg/quickstart/public/ build-output
-  post_build:
-    commands:
-      - unzip public.zip -d public
+  # post_build:
+  #   commands:
+  #     - unzip public.zip -d public
 artifacts:
   type: zip
   files:
