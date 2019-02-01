@@ -13,11 +13,11 @@ artifacts:
     artifact1:
       files:
         - sg/quickstart/public/css/*
-      base-directory: public
+      # base-directory: public
     artifact2:
       files:
         - sg/quickstart/public/images/*
-      base-directory: public
+      # base-directory: public
   # files:
   #   - sg/quickstart/public/css/*
   # discard-paths: yes
