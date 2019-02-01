@@ -8,8 +8,16 @@ phases:
 artifacts:
   files:
     - sg/quickstart/public/*
-    - sg/quickstart/public/images/*
-  base-directory: public
+  discard-paths: yes
+  secondary-artifacts:
+    artifact1:
+      files:
+        - sg/quickstart/public/css/*
+      base-directory: public
+    artifact2:
+      files:
+        - sg/quickstart/public/images/*
+      base-directory: public
   # files:
   #   - sg/quickstart/public/css/*
   # discard-paths: yes
