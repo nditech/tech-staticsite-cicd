@@ -9,7 +9,7 @@ artifacts:
   files:
     - ssg/quickstart/public/*
   discard-paths: yes
-  base-directory: public
+  # base-directory: public
   # secondary-artifacts:
   #   artifactIdentifier1:
   #     files:
