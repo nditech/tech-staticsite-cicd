@@ -12,11 +12,11 @@ artifacts:
   secondary-artifacts:
     artifact1:
       files:
-        - sg/quickstart/public/css/*
+        - sg/quickstart/public/css/blue.css
       # base-directory: public
     artifact2:
       files:
-        - sg/quickstart/public/images/*
+        - sg/quickstart/public/images/favicon.ico
       # base-directory: public
   # files:
   #   - sg/quickstart/public/css/*
