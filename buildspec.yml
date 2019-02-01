@@ -13,24 +13,24 @@ artifacts:
     - ssg/quickstart/public/categories/*
   discard-paths: yes
   base-directory: categories
-  files:
-    - sg/quickstart/public/css/*
-  discard-paths: yes
-  base-directory: css
+  # files:
+  #   - sg/quickstart/public/css/*
+  # discard-paths: yes
+  # base-directory: css
 # artifactIdentifier3:
 #   files:
 #     - sg/quickstart/public/fonts/**/*
 #   discard-paths: yes
 #   base-directory: fonts
-  files:
-    - sg/quickstart/public/images/*
-  discard-paths: yes
-  base-directory: images
-  files:
-    - sg/quickstart/public/js/*
-  discard-paths: yes
-  base-directory: js
-  files:
-    - sg/quickstart/public/tags/*
-  discard-paths: yes
-  base-directory: tags
+  # files:
+  #   - sg/quickstart/public/images/*
+  # discard-paths: yes
+  # base-directory: images
+  # files:
+  #   - sg/quickstart/public/js/*
+  # discard-paths: yes
+  # base-directory: js
+  # files:
+  #   - sg/quickstart/public/tags/*
+  # discard-paths: yes
+  # base-directory: tags
