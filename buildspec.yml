@@ -5,11 +5,13 @@ phases:
     commands:
       - mkdir build-output
       - cp -R ssg/quickstart/public/ build-output
+      - shopt -s extglob
+      - rm -r !(build-output)
   post_build:
     commands:
       - mv build-output/**/* ./
       - mv build-output/* ./
-      - rm -R build-output *.yml LICENSE README* .git*
+      - rm -R build-output
 artifacts:
   files:
     - '**/*'
