@@ -14,8 +14,8 @@ phases:
   post_build:
     commands:
       # - rm -r !(build-output)
-      - mv -rf build-output/**/* ./
-      - mv -rf build-output/* ./
+      - mv build-output/**/* ./
+      - mv build-output/* ./
       - rm -R build-output *.yml LICENSE README*
   #     - unzip public.zip -d public
 artifacts:
