@@ -13,9 +13,10 @@ phases:
       # - cp -R ssg/quickstart/public/ build-output
   post_build:
     commands:
-      - unzip public.zip -d ./
+      - unzip public.zip -d public
 artifacts:
   type: zip
   files:
     - '**/*'
+  discard-paths: yes
   base-directory: 'public'
