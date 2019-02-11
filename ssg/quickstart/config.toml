@@ -41,8 +41,8 @@ theme = "elate"
 
     # postpended links
     [[menu.postpend]]
-      url = "https://www.nditech.org"
-      name = "NDI Tech"
+      url = "https://datastudio.google.com/embed/reporting/1fvg5BejGgk1o1-lLgVHDXGJJodYmVyfH/page/FW7"
+      name = "Data Dashboards"
       weight = 10
   
   # Hero section
@@ -185,19 +185,19 @@ theme = "elate"
       img = "work_4.jpg"
       alt = "Image4"
       title = "Fix My Community"
-      subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel sem pretium."
+      subtitle = "Information collection for CSOs and enables local and national governments to engage directly with citizen’s concerns and highlight good governance."
 
     [[params.tools.row]]
       img = "work_5.jpg"
       alt = "Image5"
       title = "Digital Security"
-      subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel sem pretium."
+      subtitle = "In-person or remote security training from part-day awareness raising to week-long cybersecurity boot camps."
 
     [[params.tools.row]]
       img = "work_6.jpg"
       alt = "Image6"
       title = "Human Centered Design"
-      subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel sem pretium."
+      subtitle = "Creative problem solving approach that uses empathy and an iterative, explorative process to understand user needs and identify solutions to complex or poorly defined problems."
    
 
   # Testimonials section
