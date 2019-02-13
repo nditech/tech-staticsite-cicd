@@ -23,9 +23,9 @@ theme = "elate"
   [params.navigation]
     brand = "DemTools by NDI"
     home = "Home"
+    services = "2019 Initiatives"
     counters = "2018 Stats"    
     testimonials = "Testimonials"
-    services = "2019 Initiatives"
     tools = "Products and Services"
     about = "About"
     contact = "Contact"
@@ -135,25 +135,25 @@ theme = "elate"
   [params.services]
     enable = true
     title = "Ahead for 2019"
-    description = "Looking ahead this is what to expect from the technology team. TODO Update icons and text."
+    description = "Looking ahead this is what to expect from the technology team."
 
     [[params.services.item]]
       title = "Continued data privacy focus"
-      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
+      description = "We will continue to improve how we handle the personal and sensitive information of our beneficiaries."
       icon = "icon-lock"
 
     [[params.services.item]]
       title = "A “One CRM” Initiative"
-      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
+      description = "A contact relationship system for NDI staff to unifying our contact management and outreach initiatives."
       icon = "icon-people"
     [[params.services.item]]
       title = "Reducing the time to deliver websites"
-      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."
+      description = "You spoke and we heard! NDI Tech will be rolling out a new system to reduce the time and cost of deploying websites."
       icon = "icon-cloud-upload"
 
       [[params.services.item]]
       title = "Launch of new Software Feedback and Ideas Portal"
-      description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae nisi laoreet, lacinia erat vel, mollis purus."      
+      description = "<strong>feedback.demcloud.org</strong> is a place for you to start capturing actionable feedback in a central place."      
       icon = "icon-layers"
 
 
@@ -191,7 +191,7 @@ theme = "elate"
       img = "work_5.jpg"
       alt = "Image5"
       title = "Digital Security"
-      subtitle = "In-person or remote security training from part-day awareness raising to week-long cybersecurity boot camps."
+      subtitle = "Our consultants conduct in-person or remote security training from part-day awareness raising to week-long cybersecurity boot camps around the world."
 
     [[params.tools.row]]
       img = "work_6.jpg"

@@ -16,6 +16,10 @@
 
                     <li class="active"><a href="#" data-nav-section="home"><span>{{ with .Site.Params.navigation.home }}{{ . | markdownify }}{{ end }}</span></a></li>
                     
+                    {{ if .Site.Params.services.enable }}
+                    <li><a href="#" data-nav-section="services"><span>{{ with .Site.Params.navigation.services }}{{ . | markdownify }}{{ end }}</span></a></li> 
+                    {{ end }}
+                    
                     {{ if .Site.Params.counters.enable }}
                     <li><a href="#" data-nav-section="counters"><span>{{ with .Site.Params.navigation.counters }}{{ . | markdownify }}{{ end }}</span></a></li> 
                     {{ end }}
@@ -26,10 +30,6 @@
 
                     {{ if .Site.Params.testimonials.enable }}
                     <li><a href="#" data-nav-section="testimonials"><span>{{ with .Site.Params.navigation.testimonials }}{{ . | markdownify }}{{ end }}</span></a></li> 
-                    {{ end }}
-
-                    {{ if .Site.Params.services.enable }}
-                    <li><a href="#" data-nav-section="services"><span>{{ with .Site.Params.navigation.services }}{{ . | markdownify }}{{ end }}</span></a></li> 
                     {{ end }}
 
                     {{ if .Site.Params.about.enable }}
