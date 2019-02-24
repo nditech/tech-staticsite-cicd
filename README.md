@@ -14,7 +14,7 @@
   <a href="#authors">Author(s)</a>
 </p>
 
-Static Site Generator Demonstration site.
+#### Static Site Generator Demonstration site written for the technology team (Software Engineers/TechOps)
 
 
 ## Installation
@@ -54,6 +54,19 @@ The Hugo [documentation](https://gohugo.io/overview/introduction/) gives a much 
 
 * The `/public` directory is the final product, with the entire generated website.
 
+## Javascript
+
+### Add javascript to a page
+
+Add a new file in `/src/js/page/` called `{pagetitle}.js` Add the custom javascript here. The the page content file, add `script ="{pagetitle}.js"` to the Front Matter metadata. The script should now download and run whenever the page is visited.
+
+### Add a javascript library
+
+Add the library JS file to `/src/js/vendor`. During a Gulp build process, for example, it will be minified and combined with all other libraries in the directory, and imported before the page-specific scripts on each page.
+
+### Add global javascript
+For any javascript that should be run on every page, add it to `/src/js/scripts.js`.
+
 
 ## Contributing
 
@@ -65,8 +78,8 @@ The Hugo [documentation](https://gohugo.io/overview/introduction/) gives a much 
 
 [MIT](./LICENSE)
 
-## Author(s)
-Theme modified from [Elate theme](https://freehtml5.co/) ported to Hugo by [Pieter Saey](http://saey55.gitlab.io/pietercv)
+## Author(s) & Attribution
+Theme modified by Noble Ackerson from [Elate theme](https://freehtml5.co/) which was ported to Hugo by [Pieter Saey](http://saey55.gitlab.io/pietercv)
 
 * <b>Noble Ackerson</b>
     > nackerson@ndi.org &nbsp;&middot;&nbsp;
