@@ -67,6 +67,15 @@ Add the library JS file to `/src/js/vendor`. During a Gulp build process, for ex
 ### Add global javascript
 For any javascript that should be run on every page, add it to `/src/js/scripts.js`.
 
+## Non-Markdown based Content Editor (For our customers)
+
+### Prose Server Setup (Free Product)
+
+* TODO
+
+### Contentful Config (Paid product)
+
+* TODO
 
 ## Contributing
 
