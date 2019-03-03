@@ -17,12 +17,17 @@
 				{{ end }}
 			</div>
 			{{ if .Site.Params.intro.video.enable }}
-			<div class="row watch-video text-center to-animate">
+			<div class="row text-center to-animate">
+				<span class="col-md-12 text-center ">
+					<iframe width="800" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/67559625-924d-44d5-8f5c-20aef79884d0"></iframe>
+				</span>
+			</div>
+			<!-- <div class="row watch-video text-center to-animate"> -->
 				<!-- <span>{{ with .Site.Params.intro.video }}{{ . }}{{ end }}</span> -->
-				<span>{{.Site.Params.intro.video.title | markdownify }}</span>
+				<!-- <span>{{.Site.Params.intro.video.title | markdownify }}</span>
 
 				<a href="{{ .Site.Params.intro.video.url }}" class="popup-vimeo btn-video"><i class="{{ .Site.Params.intro.video.icon | markdownify }}"></i></a>
-			</div>
+			</div> -->
 			{{ end }}
 		</div>
 	</section>
