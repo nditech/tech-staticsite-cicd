@@ -21,7 +21,7 @@ theme = "elate"
 
   # Navigation
   [params.navigation]
-    brand = "DemTools by NDI"
+    brand = "NDI Tech"
     home = "Home"
     services = "2019 Initiatives"
     counters = "2018 Stats"    
@@ -47,8 +47,8 @@ theme = "elate"
   
   # Hero section
   [params.hero]
-    title = "2018 Year in Review"
-    subtitle = 'A Year of Human Centered Design at NDI: what we learned by letting user feedback shape the solutions we build for you.'
+    title = "Nothing for now"
+    subtitle = 'Experimental Site'
     # TODO wire-up CTA button
     url = "https://www.demworks.org/citizen-centered-designing-technology-solutions-democracy-ndi"
     # cta = 'More on Human Centered Design'
