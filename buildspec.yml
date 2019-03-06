@@ -3,7 +3,7 @@ version: 0.2
 phases:
   build:
     commands:
-      - aws s3 sync --delete . s3://dem.tools-test-bucket
+      - aws s3 rm s3://dem.tools-test-bucket/ --recursive
       - mkdir build-output
       - find . -type d -name public -exec cp -R {} build-output \;
       - find . -mindepth 1 -name build-output -prune -o -exec rm -rf {} +
