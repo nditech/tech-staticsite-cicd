@@ -1,9 +1,11 @@
 version: 0.2
 
 phases:
-  build:
+  pre_build:
     commands:
       - aws s3 rm s3://dem.tools-test-bucket --recursive
+  build:
+    commands:
       - mkdir build-output
       - find . -type d -name public -exec cp -R {} build-output \;
       - find . -mindepth 1 -name build-output -prune -o -exec rm -rf {} +
