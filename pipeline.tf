@@ -1,6 +1,6 @@
 # Terraform template provisions AWS infrastructure for the pipeline.
-# In test.
 # Able to provision infrastructure but not with a role for another AWS account.
+# TODO: Provision webhook: https://www.terraform.io/docs/providers/aws/r/codepipeline_webhook.html
 
 # Input variables
 variable "aws_region" {
