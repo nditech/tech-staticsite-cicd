@@ -1,4 +1,6 @@
 # Terraform template provisions AWS infrastructure for the pipeline.
+# $ terraform plan -var "github_repo=NDI-Demtools" -var "github_token="
+# $ terraform apply -var "github_repo=NDI-Demtools" -var "github_token="
 
 # Input variables
 variable "aws_region" {

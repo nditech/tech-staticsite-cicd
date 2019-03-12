@@ -13,6 +13,9 @@ $RECYCLE.BIN/
 # OSX
 .DS_Store
 
+# Tokens, keys, etc.
+*token
+
 # Local .terraform directories
 **/.terraform/*
 

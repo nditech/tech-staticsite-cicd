@@ -175,7 +175,7 @@ resource "aws_codebuild_project" "build_project" {
 
     environment {
         compute_type = "BUILD_GENERAL1_SMALL"
-        image = "aws/codebuild/nodejs:6.3.1"
+        image = "aws/codebuild/nodejs:10.14.1"
         type = "LINUX_CONTAINER"
     }
 
@@ -217,11 +217,11 @@ resource "aws_codepipeline" "codepipeline" {
     }
 
     stage {
-        name = "Deploy"
+        name = "Build"
 
         action {
-            name = "DeployToS3"
-            category = "Test"
+            name = "Build"
+            category = "Build"
             owner = "AWS"
             provider = "CodeBuild"
             input_artifacts = ["SourceArtifact"]
@@ -230,6 +230,24 @@ resource "aws_codepipeline" "codepipeline" {
 
             configuration {
                 ProjectName = "${aws_codebuild_project.build_project.name}"
+            }
+        }
+    }
+
+    stage {
+        name = "Deploy"
+
+        action {
+            name = "Deploy"
+            category = "Deploy"
+            owner = "AWS"
+            provider = "S3"
+            input_artifacts = ["OutputArtifact"]
+            version = "1"
+
+            configuration {
+                BucketName = "${var.pipeline_name}-artifact-bucket"
+                Extract = "true"
             }
         }
     }
