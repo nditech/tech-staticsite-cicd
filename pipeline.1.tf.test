@@ -1,6 +1,4 @@
 # Terraform template provisions AWS infrastructure for the pipeline.
-# In test.
-# Able to provision infrastructure but not with a role for another AWS account.
 
 # Input variables
 variable "aws_region" {
@@ -15,7 +13,7 @@ variable "pipeline_name" {
 
 variable "github_username" {
     type = "string"
-    default = "nditech"
+    default = "COMPANY"
 }
 
 variable "github_token" {
@@ -28,10 +26,10 @@ variable "github_repo" {
 
 provider "aws" {
     region = "${var.aws_region}"
-    # assume_role {
-    #     role_arn = "arn:aws:iam::216275992072:role/admin"
-    #     profile = "default"
-    # }
+    assume_role {
+        role_arn = "arn:aws:iam::<AWS-ACCOUNT-ID>:role/admin"
+        profile = "default"
+    }
 }
 
 # CodePipeline resources
