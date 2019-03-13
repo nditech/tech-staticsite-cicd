@@ -56,6 +56,7 @@ Clone this repository to your local machine (using SSH):
 ```
 $ git clone git@github.com:nditech/tech-staticsite-cicd.git
 $ cd tech-staticsite-cicd
+$ terraform init
 $ terraform plan -var "github_repo=<YOUR-REPO>" -var "github_token=<YOUR-GITHUB-TOKEN>"
 $ terraform apply -var "github_repo=<YOUR-REPO>" -var "github_token=<YOUR-GITHUB-TOKEN>"
 ```
@@ -78,7 +79,7 @@ Type `yes` at prompt then you should have your AWS infrastructure ready with a p
 
 ## Author(s) & Attribution
 
-Theme modified by Noble Ackerson from [Elate theme](https://freehtml5.co/) which was ported to Hugo by [Pieter Saey](http://saey55.gitlab.io/pietercv)
+Theme modified by Noble Ackerson from [Elate theme](https://freehtml5.co/) which was ported to Hugo by [Pieter Saey](http://saey55.gitlab.io/pietercv).
 
 - <b>Noble Ackerson</b>
     > nackerson@ndi.org &nbsp;&middot;&nbsp;
