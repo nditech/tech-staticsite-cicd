@@ -13,7 +13,7 @@ phases:
     commands:
       - mv build-output/**/* ./
       - mv build-output/* ./
-      - rm -R build-output
+      - rm -R build-output static-website-*
 artifacts:
   files:
     - '**/*'
