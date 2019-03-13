@@ -7,3 +7,9 @@
 ### Examples
 
 - [AWS CodePipeline with webhook](https://www.terraform.io/docs/providers/aws/r/codepipeline_webhook.html).
+    Known issue for this approach:
+    ```
+    $ terraform plan -var-file="secret.tfvars" -out=tfplan -input=false 
+    Error: provider.github: "organization": required field is not set
+    Error: provider.github: "token": required field is not set
+    ```
