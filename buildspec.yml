@@ -3,7 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      # - aws s3 rm s3://dem.tools-test-bucket --recursive
+      - aws s3 rm s3://static-website-terraform-artifact-bucket --recursive
   build:
     commands:
       - mkdir build-output

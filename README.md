@@ -42,7 +42,7 @@ Terraform automates the process of setting up your AWS Codepipeline. Terrafrom w
 
 ## Demo
 
-- [Working demo in an S3 bucket](http://dem.tools-test-bucket.s3-website-us-east-1.amazonaws.com/).
+- [Working demo in an S3 bucket](http://static-website-terraform-artifact-bucket.s3-website-us-east-1.amazonaws.com/).
 
 ## Installation
 
@@ -64,6 +64,7 @@ Type `yes` at prompt then you should have your AWS infrastructure ready with a p
 
 ## Diagnosis
 
+- [Generate your GitHub token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).
 - [Manually set up AWS CodePipeline](./docs/aws/codepipeline.md).
 - [Configure a Hugo's template](./docs/hugo/README.md).
 
@@ -77,7 +78,7 @@ Type `yes` at prompt then you should have your AWS infrastructure ready with a p
 
 [GNU General Public License v3.0](./LICENSE)
 
-## Author(s) & Attribution
+## Author(s)
 
 Theme modified by Noble Ackerson from [Elate theme](https://freehtml5.co/) which was ported to Hugo by [Pieter Saey](http://saey55.gitlab.io/pietercv).
 
