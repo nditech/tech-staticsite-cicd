@@ -28,16 +28,12 @@ variable "github_repo" {
 
 provider "aws" {
     region = "${var.aws_region}"
-    # assume_role {
-    #     role_arn = "arn:aws:iam::216275992072:role/admin"
-    #     profile = "default"
-    # }
 }
 
 # CodePipeline resources
+# Create a bucket for public hosting
 resource "aws_s3_bucket" "build_artifact_bucket" {
     bucket = "${var.pipeline_name}-artifact-bucket"
-    acl = "private"
     acl    = "public-read"
     policy = <<EOF
 {
@@ -71,6 +67,7 @@ EOF
     }
 }
 
+# Create a json file for CodePipeline's policy
 data "aws_iam_policy_document" "codepipeline_assume_policy" {
     statement {
         effect = "Allow"
@@ -83,6 +80,7 @@ data "aws_iam_policy_document" "codepipeline_assume_policy" {
     }
 }
 
+# Create a role for CodePipeline
 resource "aws_iam_role" "codepipeline_role" {
     name = "${var.pipeline_name}-codepipeline-role"
     assume_role_policy = "${data.aws_iam_policy_document.codepipeline_assume_policy.json}"
@@ -101,7 +99,9 @@ resource "aws_iam_role_policy" "attach_codepipeline_policy" {
                 "s3:GetObject",
                 "s3:GetObjectVersion",
                 "s3:GetBucketVersioning",
-                "s3:PutObject"
+                "s3:PutObject",
+                "s3:ListBucket",
+                "s3:DeleteObject"
             ],
             "Resource": "*",
             "Effect": "Allow"
@@ -130,7 +130,7 @@ resource "aws_iam_role_policy" "attach_codepipeline_policy" {
 EOF
 }
 
-# CodeBuild IAM Permissions
+# Create CodeBuild role
 resource "aws_iam_role" "codebuild_assume_role" {
     name = "${var.pipeline_name}-codebuild-role"
 
@@ -150,6 +150,7 @@ resource "aws_iam_role" "codebuild_assume_role" {
 EOF
 }
 
+# Create CodeBuild policy
 resource "aws_iam_role_policy" "codebuild_policy" {
     name = "${var.pipeline_name}-codebuild-policy"
     role = "${aws_iam_role.codebuild_assume_role.id}"
@@ -163,7 +164,9 @@ resource "aws_iam_role_policy" "codebuild_policy" {
                 "s3:PutObject",
                 "s3:GetObject",
                 "s3:GetObjectVersion",
-                "s3:GetBucketVersioning"
+                "s3:GetBucketVersioning",
+                "s3:ListBucket",
+                "s3:DeleteObject"
             ],
             "Resource": "*",
             "Effect": "Allow"
@@ -193,7 +196,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
 POLICY
 }
 
-# CodeBuild Section for the Package stage
+# Create CodeBuild project
 resource "aws_codebuild_project" "build_project" {
     name = "${var.pipeline_name}-build"
     description = "The CodeBuild project for ${var.pipeline_name}"
@@ -216,11 +219,10 @@ resource "aws_codebuild_project" "build_project" {
     }
 }
 
-# Full CodePipeline
+# Create CodePipeline
 resource "aws_codepipeline" "codepipeline" {
     name = "${var.pipeline_name}-codepipeline"
     role_arn = "${aws_iam_role.codepipeline_role.arn}"
-
     artifact_store = {
         location = "${aws_s3_bucket.build_artifact_bucket.bucket}"
         type     = "S3"

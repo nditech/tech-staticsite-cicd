@@ -56,16 +56,25 @@ Clone this repository to your local machine (using SSH):
 ```
 $ git clone git@github.com:nditech/tech-staticsite-cicd.git
 $ cd tech-staticsite-cicd
-$ terraform init
-$ terraform plan -var "github_repo=<YOUR-REPO>" -var "github_token=<YOUR-GITHUB-TOKEN>"
-$ terraform apply -var "github_repo=<YOUR-REPO>" -var "github_token=<YOUR-GITHUB-TOKEN>"
 ```
-Type `yes` at prompt then you should have your AWS infrastructure ready with a public website hosted in an S3 bucket.
+Create a `secret.tfvars` that looks like this:
+```
+github_repo = "<YOUR-REPO-NAME>"
+github_token= "<YOUR-GITHUB-TOKEN>"
+```
+Then run these:
+```
+$ terraform init -input=false
+$ terraform plan -var-file="secret.tfvars" -out=tfplan -input=false 
+$ terraform apply -input=false tfplan
+```
+You should have your AWS infrastructure ready with a public website hosted in an S3 bucket.
 
 ## Diagnosis
 
 - [Generate your GitHub token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).
 - [Manually set up AWS CodePipeline](./docs/aws/codepipeline.md).
+- [Configure terraform file](./docs/terraform/README.md).
 - [Configure a Hugo's template](./docs/hugo/README.md).
 
 ## Contribution
