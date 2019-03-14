@@ -82,6 +82,14 @@ You should have your AWS infrastructure ready with a public website hosted in an
 - [Manually set up AWS CodePipeline](./docs/aws/codepipeline.md).
 - [Configure terraform file](./docs/terraform/README.md).
 - [Configure a Hugo's template](./docs/hugo/README.md).
+- Error:
+    ```
+    Error: Error applying plan:
+    1 error(s) occurred:
+    * aws_codepipeline_webhook.codepipeline: 1 error(s) occurred:
+    * aws_codepipeline_webhook.codepipeline: doesn't support update
+    ```
+    That means terraform webhook option doesn't support update, doesn't mean it did not deploy the infrastructure. Check your AWS CodePipeline to make sure your pipeline works.
 
 ## Contribution
 
