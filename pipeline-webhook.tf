@@ -1,6 +1,6 @@
 # Terraform template provisions AWS infrastructure for the pipeline.
-# $ terraform plan -var "github_repo=NDI-Demtools" -var "github_token="
-# $ terraform apply -var "github_repo=NDI-Demtools" -var "github_token="
+# Able to provision infrastructure but not with a role for another AWS account.
+# TODO: Provision webhook: https://www.terraform.io/docs/providers/aws/r/codepipeline_webhook.html
 
 # Input variables
 variable "aws_region" {
@@ -15,12 +15,16 @@ variable "pipeline_name" {
 
 variable "github_username" {
     type = "string"
-    default = "COMPANY"
+    default = "nditech"
 }
 
 variable "github_token" {
     type = "string"
 }
+
+# variable "webhook_token" {
+#     type = "string"
+# }
 
 variable "github_repo" {
     type = "string"
@@ -28,18 +32,52 @@ variable "github_repo" {
 
 provider "aws" {
     region = "${var.aws_region}"
-    assume_role {
-        role_arn = "arn:aws:iam::<AWS-ACCOUNT-ID>:role/admin"
-        profile = "default"
-    }
+}
+
+# Configure the GitHub Provider
+provider "github" {
+    token = "${var.github_token}"
+    organization = "${var.github_username}"
 }
 
 # CodePipeline resources
+# Create a bucket for public hosting
 resource "aws_s3_bucket" "build_artifact_bucket" {
     bucket = "${var.pipeline_name}-artifact-bucket"
-    acl = "private"
+    acl    = "public-read"
+    policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::${var.pipeline_name}-artifact-bucket/*"
+        }
+    ]
+}
+EOF
+
+    website {
+        index_document = "index.html"
+        error_document = "error.html"
+
+        routing_rules = <<EOF
+[{
+    "Condition": {
+        "KeyPrefixEquals": "docs/"
+    },
+    "Redirect": {
+        "ReplaceKeyPrefixWith": "documents/"
+    }
+}]
+EOF
+    }
 }
 
+# Create a json file for CodePipeline's policy
 data "aws_iam_policy_document" "codepipeline_assume_policy" {
     statement {
         effect = "Allow"
@@ -52,6 +90,7 @@ data "aws_iam_policy_document" "codepipeline_assume_policy" {
     }
 }
 
+# Create a role for CodePipeline
 resource "aws_iam_role" "codepipeline_role" {
     name = "${var.pipeline_name}-codepipeline-role"
     assume_role_policy = "${data.aws_iam_policy_document.codepipeline_assume_policy.json}"
@@ -70,7 +109,9 @@ resource "aws_iam_role_policy" "attach_codepipeline_policy" {
                 "s3:GetObject",
                 "s3:GetObjectVersion",
                 "s3:GetBucketVersioning",
-                "s3:PutObject"
+                "s3:PutObject",
+                "s3:ListBucket",
+                "s3:DeleteObject"
             ],
             "Resource": "*",
             "Effect": "Allow"
@@ -99,7 +140,7 @@ resource "aws_iam_role_policy" "attach_codepipeline_policy" {
 EOF
 }
 
-# CodeBuild IAM Permissions
+# Create CodeBuild role
 resource "aws_iam_role" "codebuild_assume_role" {
     name = "${var.pipeline_name}-codebuild-role"
 
@@ -119,6 +160,7 @@ resource "aws_iam_role" "codebuild_assume_role" {
 EOF
 }
 
+# Create CodeBuild policy
 resource "aws_iam_role_policy" "codebuild_policy" {
     name = "${var.pipeline_name}-codebuild-policy"
     role = "${aws_iam_role.codebuild_assume_role.id}"
@@ -132,7 +174,9 @@ resource "aws_iam_role_policy" "codebuild_policy" {
                 "s3:PutObject",
                 "s3:GetObject",
                 "s3:GetObjectVersion",
-                "s3:GetBucketVersioning"
+                "s3:GetBucketVersioning",
+                "s3:ListBucket",
+                "s3:DeleteObject"
             ],
             "Resource": "*",
             "Effect": "Allow"
@@ -162,7 +206,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
 POLICY
 }
 
-# CodeBuild Section for the Package stage
+# Create CodeBuild project
 resource "aws_codebuild_project" "build_project" {
     name = "${var.pipeline_name}-build"
     description = "The CodeBuild project for ${var.pipeline_name}"
@@ -175,7 +219,7 @@ resource "aws_codebuild_project" "build_project" {
 
     environment {
         compute_type = "BUILD_GENERAL1_SMALL"
-        image = "aws/codebuild/nodejs:6.3.1"
+        image = "aws/codebuild/nodejs:10.14.1"
         type = "LINUX_CONTAINER"
     }
 
@@ -185,11 +229,10 @@ resource "aws_codebuild_project" "build_project" {
     }
 }
 
-# Full CodePipeline
+# Create CodePipeline
 resource "aws_codepipeline" "codepipeline" {
     name = "${var.pipeline_name}-codepipeline"
     role_arn = "${aws_iam_role.codepipeline_role.arn}"
-
     artifact_store = {
         location = "${aws_s3_bucket.build_artifact_bucket.bucket}"
         type     = "S3"
@@ -211,17 +254,17 @@ resource "aws_codepipeline" "codepipeline" {
                 OAuthToken = "${var.github_token}"
                 Repo = "${var.github_repo}"
                 Branch = "master"
-                PollForSourceChanges = "true"
+                # PollForSourceChanges = "true"
             }
         }
     }
 
     stage {
-        name = "Deploy"
+        name = "Build"
 
         action {
-            name = "DeployToS3"
-            category = "Test"
+            name = "Build"
+            category = "Build"
             owner = "AWS"
             provider = "CodeBuild"
             input_artifacts = ["SourceArtifact"]
@@ -233,4 +276,55 @@ resource "aws_codepipeline" "codepipeline" {
             }
         }
     }
+
+    stage {
+        name = "Deploy"
+
+        action {
+            name = "Deploy"
+            category = "Deploy"
+            owner = "AWS"
+            provider = "S3"
+            input_artifacts = ["OutputArtifact"]
+            version = "1"
+
+            configuration {
+                BucketName = "${var.pipeline_name}-artifact-bucket"
+                Extract = "true"
+            }
+        }
+    }
+}
+
+# Add webhook to pipeline
+resource "aws_codepipeline_webhook" "codepipeline" {
+    name            = "${var.pipeline_name}-codepipeline-webhook"
+    authentication  = "GITHUB_HMAC"
+    target_action   = "Source"
+    target_pipeline = "${aws_codepipeline.codepipeline.name}"
+
+    authentication_configuration {
+        # secret_token = "${var.webhook_token}"
+    }
+
+    filter {
+        json_path    = "$.ref"
+        match_equals = "refs/heads/{Branch}"
+    }
+}
+
+# Wire the CodePipeline webhook into a GitHub repository.
+resource "github_repository_webhook" "codepipeline" {
+  repository = "${var.github_repo}"
+
+  name = "web"
+
+  configuration {
+    url          = "${aws_codepipeline_webhook.codepipeline.url}"
+    content_type = "form"
+    insecure_ssl = true
+    # secret       = "${var.webhook_token}"
+  }
+
+  events = ["push"]
 }
