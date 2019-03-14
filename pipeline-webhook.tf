@@ -1,6 +1,7 @@
 # Terraform template provisions AWS infrastructure for the pipeline.
-# Able to provision infrastructure but not with a role for another AWS account.
-# TODO: Provision webhook: https://www.terraform.io/docs/providers/aws/r/codepipeline_webhook.html
+# Run these commands from the terminal:
+# $ terraform plan -var-file="secret.tfvars" -out=tfplan -input=false
+# $ terraform apply -input=false tfplan
 
 # Input variables
 variable "aws_region" {
@@ -22,9 +23,9 @@ variable "github_token" {
     type = "string"
 }
 
-# variable "webhook_token" {
-#     type = "string"
-# }
+variable "webhook_secret" {
+    type = "string"
+}
 
 variable "github_repo" {
     type = "string"
@@ -304,7 +305,7 @@ resource "aws_codepipeline_webhook" "codepipeline" {
     target_pipeline = "${aws_codepipeline.codepipeline.name}"
 
     authentication_configuration {
-        # secret_token = "${var.webhook_token}"
+        secret_token = "${var.webhook_secret}"
     }
 
     filter {
@@ -315,16 +316,16 @@ resource "aws_codepipeline_webhook" "codepipeline" {
 
 # Wire the CodePipeline webhook into a GitHub repository.
 resource "github_repository_webhook" "codepipeline" {
-  repository = "${var.github_repo}"
+    repository = "${var.github_repo}"
 
-  name = "web"
+    name = "web"
 
-  configuration {
-    url          = "${aws_codepipeline_webhook.codepipeline.url}"
-    content_type = "form"
-    insecure_ssl = true
-    # secret       = "${var.webhook_token}"
-  }
+    configuration {
+        url          = "${aws_codepipeline_webhook.codepipeline.url}"
+        content_type = "form"
+        insecure_ssl = true
+        secret       = "${var.webhook_secret}"
+    }
 
-  events = ["push"]
+    events = ["push"]
 }

@@ -57,10 +57,15 @@ Clone this repository to your local machine (using SSH):
 $ git clone git@github.com:nditech/tech-staticsite-cicd.git
 $ cd tech-staticsite-cicd
 ```
+Copy the output of the command below and use it as your webhook secret. You can use another command or just make your own secret from a string of random characters. It's recommended to to pull the webhook secret from the environment or something like SSM Parameter Store.
+```
+ruby -rsecurerandom -e 'puts SecureRandom.hex(20)'
+```
 Create a `secret.tfvars` that looks like this:
 ```
 github_repo = "<YOUR-REPO-NAME>"
-github_token= "<YOUR-GITHUB-TOKEN>"
+github_token= "<YOUR-GITHUB-TOKEN>
+webhook_secret = "<YOUR-WEBHOOK-SECRET>"
 ```
 Then run these:
 ```
@@ -73,6 +78,7 @@ You should have your AWS infrastructure ready with a public website hosted in an
 ## Diagnosis
 
 - [Generate your GitHub token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).
+- [Create and secure your GitHub webhook](https://developer.github.com/webhooks/securing/).
 - [Manually set up AWS CodePipeline](./docs/aws/codepipeline.md).
 - [Configure terraform file](./docs/terraform/README.md).
 - [Configure a Hugo's template](./docs/hugo/README.md).
