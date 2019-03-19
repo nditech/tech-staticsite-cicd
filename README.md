@@ -36,9 +36,11 @@ This is a demonstration of NDI Tech's CI/CD implementation for generated static 
 
 The benefit of using a framework like Hugo is your team can quickly create a static website with plenty of themes to choose from.
 
-AWS CodePipeline automates the workflow for developing, testing and deploying the website, in this case, to an S3 bucket. It works with any repository on GitHub (or the equivalent of your cloud provider), and any framework that crates a build or public folder contains all `html`, `css` and `js` files.
+AWS CodePipeline automates the workflow for developing, testing and deploying the website, in this case, to an S3 bucket. It works with any repository on GitHub (or the equivalent of your cloud provider), and any framework that crates a `build` or `public` folder contains all `html`, `css` and `js` files.
 
 Terraform automates the process of setting up your AWS Codepipeline. Terrafrom works with other cloud providers, not just with AWS.
+
+- Read more about how to manually set up an AWS CodePipeline and detailed explanation of a `buildspec.yml` file [here](./docs/aws/codepipeline.md). 
 
 ## Demo
 
