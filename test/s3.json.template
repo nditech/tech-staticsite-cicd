@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description" : "AWS CloudFormation Sample Template. Resources are removed if rollback",
+    "Description" : "AWS CloudFormation Sample Template. Resources are removed if rollback.",
 
     "Resources": {
         "S3Bucket": {

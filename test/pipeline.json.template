@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Pipeline using CodePipeline and CodeBuild for continuous delivery of a single-page application to S3",
+    "Description": "Pipeline using CodePipeline and CodeBuild for continuous delivery of a single-page application to S3.",
     "Parameters": {
         "SiteBucketName": {
             "Type": "String",

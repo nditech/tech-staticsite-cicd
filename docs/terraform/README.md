@@ -7,7 +7,7 @@ Both pipelines (with and without webhook) follow this logic:
 - Import secrets/keys/tokens from a `.tfvars` file.
 - Create a CodePipeline using all the resources and roles.
 
-Since we're using file `./pipeline-webhook.tf`, the pipleline without webhook is saved in `./test/pipeline.tf.stable` with a different extension than `.tf` to make sure terraform won't execute it.
+Since we're using file `./pipeline-webhook.tf`, the pipleline without webhook is saved in `./test/pipeline.tf` to make sure terraform won't execute it.
 
 ## Working with terraform
 
