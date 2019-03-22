@@ -4,7 +4,8 @@
     "Parameters": {
         "SiteBucketName": {
             "Type": "String",
-            "Description": "Name of bucket to create to host the website"
+            "Description": "Name of bucket to create to host the website",
+            "Default": "test-pipeline-fri22mar2019-1712-bucket"
         },
         "GitHubUser": {
             "Type": "String",
