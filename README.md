@@ -32,7 +32,7 @@ This documentation assumes that you're running a UNIX machine (Linux or Mac) and
 
 ## Intro
 
-This is a demonstration of NDI Tech's CI/CD implementation for generated static websites. This website is built with [Hugo](https://gohugo.io/). The deployment of the website is automated by [AWS CodePipeline](https://aws.amazon.com/codepipeline/). The AWS infrastructure is provisioned by a [terraform](https://www.terraform.io/) template. You can use any other framework to build your website (React, Angular, etc.) and other infrastructure-as-code template (like AWS CloudFormation) to provision your infrastructure.
+This is a demonstration of NDI Tech's CI/CD implementation for generated static websites. This website is built with [Hugo](https://gohugo.io/). The deployment of the website is automated by [AWS CodePipeline](https://aws.amazon.com/codepipeline/). The AWS infrastructure is provisioned by a [terraform](https://www.terraform.io/) or an AWS [CloudFormation](https://aws.amazon.com/cloudformation/) template. You can use any other framework to build your website (React, Angular, etc.) and other infrastructure-as-code template (like AWS CloudFormation) to provision your infrastructure.
 
 The benefit of using a framework like Hugo is your team can quickly create a static website with plenty of themes to choose from.
 
@@ -50,7 +50,6 @@ Terraform automates the process of setting up your AWS Codepipeline. Terrafrom w
 
 Make sure you have on your machine:
 
-- [Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
 - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 - [Hugo](https://gohugo.io/getting-started/installing/)
 
@@ -59,6 +58,12 @@ Clone this repository to your local machine (using SSH):
 $ git clone git@github.com:nditech/tech-staticsite-cicd.git
 $ cd tech-staticsite-cicd
 ```
+
+### Deploy the stack with Terraform
+
+Make sure you have on your machine:
+- [Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
+
 Copy the output of the command below and use it as your webhook secret. You can use another command or just make your own secret from a string of random characters. It's recommended to to pull the webhook secret from the environment or something like SSM Parameter Store.
 ```
 ruby -rsecurerandom -e 'puts SecureRandom.hex(20)'
@@ -76,6 +81,19 @@ $ terraform plan -var-file="secret.tfvars" -out=tfplan -input=false
 $ terraform apply -input=false tfplan
 ```
 You should have your AWS infrastructure ready with a public website hosted in an S3 bucket.
+
+### Deploy the stack with AWS CloudFormation
+
+> NOTE: Currently, only template `./test/s3.json.template` works.
+
+Use the `.json.template` files, remove the `.template` extension. Currently, they're inside `./test`.
+
+- If you use AWS Console, just copy and paste the content of the `.json` file into CloudfFormation, remember to choose tab **Template**, validate the stack then create it. For more details, check [AWS Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-guide.html).
+
+- If you use AWS CLI, run this command where the template file is:
+    ```
+    $ aws cloudformation create-stack --stack-name <NAME-OF-YOUR-STACK> --template-body file://<TEMPLATE-NAME>.json --parameters <OPTIONAL-PARAMETERS>
+    ```
 
 ## Diagnosis
 
