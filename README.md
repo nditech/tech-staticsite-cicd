@@ -34,12 +34,13 @@ This documentation assumes that you're running a UNIX machine (Linux or Mac) and
 
 This is a demonstration of NDI Tech's CI/CD implementation for generated static websites. This website is built with [Hugo](https://gohugo.io/). The deployment of the website is automated by [AWS CodePipeline](https://aws.amazon.com/codepipeline/). The AWS infrastructure is provisioned by a [terraform](https://www.terraform.io/) or an AWS [CloudFormation](https://aws.amazon.com/cloudformation/) template. You can use any other framework to build your website (React, Angular, etc.) and other infrastructure-as-code template (like AWS CloudFormation) to provision your infrastructure.
 
-The benefit of using a framework like Hugo is your team can quickly create a static website with plenty of themes to choose from.
+- The benefit of using a framework like Hugo is your team can quickly create a static website with plenty of themes to choose from.
+- Infrastructure as code:
+    - If you deploy with Terraform: Terraform automates the process of setting up your AWS Codepipeline. Terrafrom works with other cloud providers, not just with AWS.
+    - If you deploy with CloudFormation: CloudFormation will roll back if a stack cannot be created.
+    - Each method has pros and cons. Pick the one that is most suitable for your need.
 
-AWS CodePipeline automates the workflow for developing, testing and deploying the website, in this case, to an S3 bucket. It works with any repository on GitHub (or the equivalent of your cloud provider), and any framework that crates a `build` or `public` folder contains all `html`, `css` and `js` files.
-
-Terraform automates the process of setting up your AWS Codepipeline. Terrafrom works with other cloud providers, not just with AWS.
-
+- AWS CodePipeline automates the workflow for developing, testing and deploying the website, in this case, to an S3 bucket. It works with any repository on GitHub (or the equivalent of your cloud provider), and any framework that crates a `build` or `public` folder contains all `html`, `css` and `js` files.
 - Read more about how to manually set up an AWS CodePipeline and detailed explanation of a `buildspec.yml` file [here](./docs/aws/codepipeline.md). 
 
 ## Demo
@@ -94,6 +95,7 @@ Use the `.json.template` files, remove the `.template` extension. Currently, the
     ```
     $ aws cloudformation create-stack --stack-name <NAME-OF-YOUR-STACK> --template-body file://<TEMPLATE-NAME>.json --parameters <OPTIONAL-PARAMETERS>
     ```
+    The `s3.json` template will create an S3 bucket to host a static website.
 
 ## Diagnosis
 
