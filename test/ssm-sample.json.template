@@ -1,0 +1,25 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Using existing secure and non-secure SSM Parameters in CloudFormation",
+    "Resources": {
+        "MyRDSDB": {
+            "Type": "AWS::RDS::DBInstance",
+            "Properties": {
+                "DBInstanceClass": "{{resolve:ssm:ssbRDSiClass:1}}",
+                "AllocatedStorage": "20",
+                "Engine": "mariadb",
+                "EngineVersion": "10.2",
+                "MasterUsername": "appadmin",
+                "MasterUserPassword": "{{resolve:ssm-secure:ssbRDSmEcntl:1}}"
+            }
+        }
+    },
+    "Outputs": {
+        "DbInstanceId": {
+            "Description": "InstanceID of My RDS DB",
+            "Value": {
+                "Ref": "MyRDSDB"
+            }
+        }
+    }
+}
