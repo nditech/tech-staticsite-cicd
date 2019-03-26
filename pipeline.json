@@ -1,10 +1,10 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Pipeline using CodePipeline and CodeBuild for continuous delivery of a single-page application to S3",
+    "Description": "CloudFormation template uses CodePipeline and CodeBuild for continuous delivery of a single-page application to S3",
     "Parameters": {
         "SiteBucketName": {
             "Type": "String",
-            "Default": "test-cloudformation-26mar2019-bucket",
+            "Default": "static-website-cloudformation-bucket",
             "Description": "Name of bucket to create to host the website."
         },
         "GitHubUser": {
@@ -26,7 +26,7 @@
             "NoEcho": true,
             "Type": "String",
             "Default": "{{resolve:ssm:staticSiteCICDGitHubToken:1}}",
-            "Description": "Secret. It might look something like 9b189a1654643522561f7b3ebd44a1531a4287af OAuthToken with access to Repo. Go to https://github.com/settings/tokens"
+            "Description": "GitHub Token stored in AWS Systems Manager Parameter Store."
         },
         "BuildType": {
             "Type": "String",

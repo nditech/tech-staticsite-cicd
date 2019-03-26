@@ -34,7 +34,7 @@ This documentation assumes that you're running a UNIX machine (Linux or Mac) and
 
 This is a demonstration of NDI Tech's CI/CD implementation for generated static websites. This website is built with [Hugo](https://gohugo.io/). The deployment of the website is automated by [AWS CodePipeline](https://aws.amazon.com/codepipeline/). The AWS infrastructure is provisioned by a [terraform](https://www.terraform.io/) or an AWS [CloudFormation](https://aws.amazon.com/cloudformation/) template. You can use any other framework to build your website (React, Angular, etc.) and other infrastructure-as-code template (like AWS CloudFormation) to provision your infrastructure.
 
-- The benefit of using a framework like Hugo is your team can quickly create a static website with plenty of themes to choose from.
+- The benefit of using a framework like Hugo is: your team can quickly create a static website with plenty of themes to choose from.
 - Infrastructure as code:
     - If you deploy with Terraform: Terraform automates the process of setting up your AWS Codepipeline. Terrafrom works with other cloud providers, not just with AWS.
     - If you deploy with CloudFormation: CloudFormation will roll back if a stack cannot be created.
@@ -45,7 +45,8 @@ This is a demonstration of NDI Tech's CI/CD implementation for generated static 
 
 ## Demo
 
-- [Working demo in an S3 bucket](http://static-website-terraform-artifact-bucket.s3-website-us-east-1.amazonaws.com/).
+- [Working demo created by Terraform](http://static-website-terraform-artifact-bucket.s3-website-us-east-1.amazonaws.com/).
+- [Working demo created by CloudFormation](http://static-website-cloudformation-bucket.s3-website-us-east-1.amazonaws.com/).
 
 ## Installation
 
@@ -85,25 +86,23 @@ You should have your AWS infrastructure ready with a public website hosted in an
 
 ### Deploy the stack with AWS CloudFormation
 
-> NOTE: Currently, only template `./test/s3.json.template` works.
-
-Use the `.json.template` files, remove the `.template` extension. Currently, they're inside `./test`.
-
 - If you use AWS Console, just copy and paste the content of the `.json` file into CloudfFormation, remember to choose tab **Template**, validate the stack then create it. For more details, check [AWS Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-guide.html).
 
 - If you use AWS CLI, run this command where the template file is:
+
+    ::warning:: The template has default parameters' values, for your own use case, edit the template or use `--parameter-overrides` as described [here](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/deploy/index.html).
     ```
-    $ aws cloudformation create-stack --stack-name <NAME-OF-YOUR-STACK> --template-body file://<TEMPLATE-NAME>.json --parameters <OPTIONAL-PARAMETERS>
+    $ aws cloudformation create-stack --stack-name <STACK-NAME> --template-body file://pipeline.json --capabilities CAPABILITY_NAMED_IAM
     ```
-    The `s3.json` template will create an S3 bucket to host a static website.
 
 ## Diagnosis
 
 - [Generate your GitHub token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).
 - [Create and secure your GitHub webhook](https://developer.github.com/webhooks/securing/).
-- [Manually set up AWS CodePipeline](./docs/aws/codepipeline.md).
 - [Configure terraform file](./docs/terraform/README.md).
+- [Configure CloudFormation file](./docs/aws/cloudformation.md).
 - [Configure a Hugo's template](./docs/hugo/README.md).
+- [Manually set up AWS CodePipeline](./docs/aws/codepipeline.md).
 - Error:
     ```
     Error: Error applying plan:
