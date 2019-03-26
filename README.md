@@ -89,11 +89,10 @@ You should have your AWS infrastructure ready with a public website hosted in an
 - If you use AWS Console, just copy and paste the content of the `.json` file into CloudfFormation, remember to choose tab **Template**, validate the stack then create it. For more details, check [AWS Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-guide.html).
 
 - If you use AWS CLI, run this command where the template file is:
-
-    ::warning:: The template has default parameters' values, for your own use case, edit the template or use `--parameter-overrides` as described [here](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/deploy/index.html).
     ```
     $ aws cloudformation create-stack --stack-name <STACK-NAME> --template-body file://pipeline.json --capabilities CAPABILITY_NAMED_IAM
     ```
+    :warning: The template has default parameters' values, for your own use case, edit the template or use `--parameter-overrides` as described [here](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/deploy/index.html).
 
 ## Diagnosis
 
