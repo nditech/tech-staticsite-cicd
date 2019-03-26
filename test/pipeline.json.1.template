@@ -4,44 +4,44 @@
     "Parameters": {
         "SiteBucketName": {
             "Type": "String",
-            "Description": "Name of bucket to create to host the website",
-            "Default": "test-pipeline-25mar2019-0929-bucket"
+            "Default": "test-cloudformation-26mar2019-bucket",
+            "Description": "Name of bucket to create to host the website."
         },
         "GitHubUser": {
             "Type": "String",
-            "Description": "GitHub User",
-            "Default": "nditech"
+            "Default": "nditech",
+            "Description": "GitHub Username."
         },
         "GitHubRepo": {
             "Type": "String",
-            "Description": "GitHub Repo to pull from. Only the Name. not the URL",
-            "Default": "tech-staticsite-cicd"
+            "Default": "tech-staticsite-cicd",
+            "Description": "GitHub Repo to pull from. Only the Name, not the URL."
         },
         "GitHubBranch": {
             "Type": "String",
-            "Description": "GitHub Branch",
-            "Default": "master"
+            "Default": "master",
+            "Description": "GitHub Branch."
         },
         "GitHubToken": {
             "NoEcho": true,
             "Type": "String",
-            "Description": "Secret. It might look something like 9b189a1654643522561f7b3ebd44a1531a4287af OAuthToken with access to Repo. Go to https://github.com/settings/tokens",
-            "Default": "{{resolve:ssm:staticSiteCICDGitHubToken:1}}"
+            "Default": "{{resolve:ssm:staticSiteCICDGitHubToken:1}}",
+            "Description": "Secret. It might look something like 9b189a1654643522561f7b3ebd44a1531a4287af OAuthToken with access to Repo. Go to https://github.com/settings/tokens"
         },
         "BuildType": {
             "Type": "String",
             "Default": "LINUX_CONTAINER",
-            "Description": "The build container type to use for building the app"
+            "Description": "The build container type to use for building the app."
         },
         "BuildComputeType": {
             "Type": "String",
             "Default": "BUILD_GENERAL1_SMALL",
-            "Description": "The build compute type to use for building the app"
+            "Description": "The build compute type to use for building the app."
         },
         "BuildImage": {
             "Type": "String",
             "Default": "aws/codebuild/ubuntu-base:14.04",
-            "Description": "The build image to use for building the app"
+            "Description": "The build image to use for building the app."
         }
     },
     "Metadata": {
@@ -127,7 +127,9 @@
                 "Path": "/",
                 "Policies": [
                     {
-                        "PolicyName": "codebuild-service",
+                        "PolicyName": {
+                            "Fn::Sub": "${AWS::StackName}-codepipeline-policy"
+                        },
                         "PolicyDocument": {
                             "Statement": [
                                 {
@@ -163,7 +165,9 @@
                 "Path": "/",
                 "Policies": [
                     {
-                        "PolicyName": "codepipeline-service",
+                        "PolicyName": {
+                            "Fn::Sub": "${AWS::StackName}-codepipeline-policy"
+                        },
                         "PolicyDocument": {
                             "Statement": [
                                 {
@@ -216,7 +220,39 @@
                     "Ref": "SiteBucketName"
                 },
                 "WebsiteConfiguration": {
-                    "IndexDocument": "index.html"
+                    "IndexDocument": "index.html",
+                    "ErrorDocument": "error.html"
+                }
+            }
+        },
+        "BucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "PublicReadForGetBucketObjects",
+                            "Effect": "Allow",
+                            "Principal": "*",
+                            "Action": "s3:GetObject",
+                            "Resource": {
+                                "Fn::Join": [
+                                    "",
+                                    [
+                                        "arn:aws:s3:::",
+                                        {
+                                            "Ref": "SiteBucket"
+                                        },
+                                        "/*"
+                                    ]
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "Bucket": {
+                    "Ref": "SiteBucket"
                 }
             }
         },
@@ -229,7 +265,7 @@
             "DependsOn": "CodeBuildRole",
             "Properties": {
                 "Name": {
-                    "Fn::Sub": "${AWS::StackName}-DeploySite"
+                    "Fn::Sub": "${AWS::StackName}-codebuild-project"
                 },
                 "Description": "Deploy site to S3",
                 "ServiceRole": {
@@ -255,7 +291,7 @@
                 "Source": {
                     "Type": "CODEPIPELINE",
                     "BuildSpec": {
-                        "Fn::Sub": "version: 0.1\nphases:\n  post_build:\n    commands:\n      - aws s3 cp --recursive --acl public-read ./samples s3://${SiteBucketName}/samples \n      - aws s3 cp --recursive --acl public-read ./html s3://${SiteBucketName}/ \nartifacts:\n  type: zip\n  files:\n    - ./html/index.html\n"
+                        "Fn::Sub": "version: 0.2\nphases:\n  pre_build:\n    commands:\n      - aws s3 rm s3://${SiteBucketName} --recursive \n  build:\n    commands:\n      - mkdir build-output \n      - find . -type d -name public -exec cp -R {} build-output \\; \n      - find . -mindepth 1 -name build-output -prune -o -exec rm -rf {} + \n  post_build:\n    commands:\n      - mv build-output/**/* ./ \n      - mv build-output/* ./ \n      - rm -R build-output \nartifacts:\n  files:\n    - '**/*'\n  name: $(AWS_REGION)-$(date +%Y-%m-%d) \n"
                     }
                 },
                 "TimeoutInMinutes": 10
@@ -307,30 +343,56 @@
                         ]
                     },
                     {
-                        "Name": "Deploy",
+                        "Name": "Build",
                         "Actions": [
                             {
-                                "Name": "Artifact",
+                                "InputArtifacts": [
+                                    {
+                                        "Name": "SourceArtifacts"
+                                    }
+                                ],
+                                "Name": "Build",
                                 "ActionTypeId": {
                                     "Category": "Build",
                                     "Owner": "AWS",
                                     "Version": "1",
                                     "Provider": "CodeBuild"
                                 },
-                                "InputArtifacts": [
-                                    {
-                                        "Name": "SourceArtifacts"
-                                    }
-                                ],
                                 "OutputArtifacts": [
                                     {
-                                        "Name": "DeploymentArtifacts"
+                                        "Name": "OutputArtifacts"
                                     }
                                 ],
                                 "Configuration": {
                                     "ProjectName": {
                                         "Ref": "CodeBuildDeploySite"
                                     }
+                                },
+                                "RunOrder": 1
+                            }
+                        ]
+                    },
+                    {
+                        "Name": "Deploy",
+                        "Actions": [
+                            {
+                                "Name": "Deploy",
+                                "ActionTypeId": {
+                                    "Category": "Deploy",
+                                    "Owner": "AWS",
+                                    "Version": "1",
+                                    "Provider": "S3"
+                                },
+                                "InputArtifacts": [
+                                    {
+                                        "Name": "OutputArtifacts"
+                                    }
+                                ],
+                                "Configuration": {
+                                    "BucketName": {
+                                        "Ref": "SiteBucket"
+                                    },
+                                    "Extract": true
                                 },
                                 "RunOrder": 1
                             }
